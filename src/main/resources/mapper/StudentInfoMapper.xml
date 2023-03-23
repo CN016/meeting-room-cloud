@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="meeting.room.meetingroomcloud.dao.StudentInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="meeting.room.meetingroomcloud.entity.StudentInfo">
+        <id column="id" property="id" />
+        <result column="isFirst" property="isFirst" />
+        <result column="is_prove" property="isProve" />
+        <result column="openid" property="openid" />
+        <result column="role" property="role" />
+        <result column="student_email" property="studentEmail" />
+        <result column="student_lab" property="studentLab" />
+        <result column="student_name" property="studentName" />
+        <result column="student_number" property="studentNumber" />
+        <result column="student_phone" property="studentPhone" />
+        <result column="student_teacher" property="studentTeacher" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, isFirst, is_prove, openid, role, student_email, student_lab, student_name, student_number, student_phone, student_teacher
+    </sql>
+
+</mapper>

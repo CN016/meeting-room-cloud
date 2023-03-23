@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="meeting.room.meetingroomcloud.dao.UserAppointInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="meeting.room.meetingroomcloud.entity.UserAppointInfo">
+        <id column="id" property="id" />
+        <result column="openid" property="openid" />
+        <result column="apply_time" property="applyTime" />
+        <result column="appoint_name" property="appointName" />
+        <result column="appoint_phone" property="appointPhone" />
+        <result column="create_time" property="createTime" />
+        <result column="handle_time" property="handleTime" />
+        <result column="is_agree" property="isAgree" />
+        <result column="reject_reason" property="rejectReason" />
+        <result column="room_password" property="roomPassword" />
+        <result column="roomid" property="roomid" />
+        <result column="things_text" property="thingsText" />
+        <result column="time" property="time" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, openid, apply_time, appoint_name, appoint_phone, create_time, handle_time, is_agree, reject_reason, room_password, roomid, things_text, time
+    </sql>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="meeting.room.meetingroomcloud.dao.RoomInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="meeting.room.meetingroomcloud.entity.RoomInfo">
+        <id column="id" property="id" />
+        <result column="roomid" property="roomid" />
+        <result column="room_cover_img" property="roomCoverImg" />
+        <result column="file_id" property="fileId" />
+        <result column="room_people" property="roomPeople" />
+        <result column="room_type" property="roomType" />
+        <result column="room_name" property="roomName" />
+        <result column="room_contact_phone" property="roomContactPhone" />
+        <result column="room_contact_name" property="roomContactName" />
+        <result column="room_brief_info" property="roomBriefInfo" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, roomid, room_cover_img, file_id, room_people, room_type, room_name, room_contact_phone, room_contact_name, room_brief_info
+    </sql>
+
+</mapper>

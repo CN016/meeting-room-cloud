@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://*:3306/meeting-room?serverTimezone=UTC
+    username: root
+    password: ''
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  #加载全局的配置文件
+  # config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: meeting.room.meetingroomcloud.entity
+server:
+  port: 8099
