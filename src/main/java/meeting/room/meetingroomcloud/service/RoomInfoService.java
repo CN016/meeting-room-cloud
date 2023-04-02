@@ -4,6 +4,8 @@ package meeting.room.meetingroomcloud.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import meeting.room.meetingroomcloud.entity.RoomInfo;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -17,4 +19,6 @@ public interface RoomInfoService extends IService<RoomInfo> {
     RoomInfo getRoomById(Integer id);
 
     boolean deleteRoomById(Integer roomId);
+
+    List<RoomInfo> getList();
 }

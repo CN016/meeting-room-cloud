@@ -14,4 +14,6 @@ import meeting.room.meetingroomcloud.entity.AdminInfo;
  */
 public interface AdminInfoService extends IService<AdminInfo> {
 
+    AdminInfo getByPhoneAndPasswd(String phone , String passwd);
+
 }

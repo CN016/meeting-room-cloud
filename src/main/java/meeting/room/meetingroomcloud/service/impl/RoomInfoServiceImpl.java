@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -33,5 +35,10 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo> i
         QueryWrapper<RoomInfo> wrapper = new QueryWrapper<>();
         wrapper.eq("roomid",roomId);
         return mapper.delete(wrapper) > 0 ;
+    }
+
+    @Override
+    public List<RoomInfo> getList() {
+        return mapper.selectList(null);
     }
 }

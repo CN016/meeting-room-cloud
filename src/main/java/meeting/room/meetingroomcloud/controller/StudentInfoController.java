@@ -8,6 +8,8 @@ import meeting.room.meetingroomcloud.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  *  前端控制器
@@ -68,10 +70,30 @@ public class StudentInfoController {
      * @param openid openid
      * @return 结果
      */
-    @RequestMapping(value = "/{openid}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/del/{openid}",method = RequestMethod.DELETE)
     @ResponseBody
     public CommonResult<String> deleteStudent(@PathVariable("openid") String openid){
         return infoService.deleteStudentByOpenid(openid) ? CommonResult.success("删除成功") : CommonResult.failed();
     }
+
+    /**
+     * 获取学生信息
+     * @param openid openid
+     * @return 结果
+     */
+    @RequestMapping(value = "/get/{openid}",method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<StudentInfo> getStudent(@PathVariable("openid") String openid){
+        StudentInfo info = infoService.getStudentInfo(openid);
+        return info == null ? CommonResult.failed() : CommonResult.success(info);
+    }
+
+    @RequestMapping(value = "",method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<StudentInfo>> countStudentInfo(){
+        List<StudentInfo> infos = infoService.getList();
+        return infos.isEmpty() ? CommonResult.failed() : CommonResult.success(infos);
+    }
+
 }
 

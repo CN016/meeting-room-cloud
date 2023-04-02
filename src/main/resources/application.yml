@@ -1,11 +1,22 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://*:3306/meeting-room?serverTimezone=UTC
+    url: jdbc:mysql://47.115.220.70:4306/meeting-room?serverTimezone=UTC
     username: root
-    password: ''
+    password: 'chenhuangluo'
     type: com.alibaba.druid.pool.DruidDataSource
 
+  data:
+    redis:
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 10
+          min-idle: 1
+          time-between-eviction-runs: 10s
+      password: chenhuangluo
+      port: 4379
+      host: 47.115.220.70
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   #加载全局的配置文件

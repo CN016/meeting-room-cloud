@@ -76,7 +76,7 @@ public class EmployeeInfoController {
      * @param openid openid
      * @return 结果
      */
-    @RequestMapping(value = "/{openid}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/del/{openid}",method = RequestMethod.DELETE)
     @ResponseBody
     public CommonResult<String> deleteEmployee(@PathVariable("openid") String openid){
         QueryWrapper<EmployeeInfo> wrapper = new QueryWrapper<>();
@@ -93,6 +93,12 @@ public class EmployeeInfoController {
         }
     }
 
+    @RequestMapping(value = "/get/{openid}",method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<EmployeeInfo> getEmployee(@PathVariable("openid") String openid){
+        EmployeeInfo info = infoService.getByOpenid(openid);
+        return info == null ? CommonResult.failed() : CommonResult.success(info);
+    }
 
 }
 

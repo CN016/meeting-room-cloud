@@ -79,6 +79,25 @@ public class RoomAppointInfoServiceImpl extends ServiceImpl<RoomAppointInfoMappe
     }
 
     @Override
+    public List<Object> getAppointInfoList(String roomid,AppointArrService arrService, ArrDetailService detailService) throws Exception{
+        RoomAppointInfo one = getOne(roomid);
+        Long appointArrID = one.getAppointArr();
+        return arrService.getList(appointArrID, detailService);
+    }
+
+    @Override
+    public List<Object> getAppointInfoListByTime(LocalDateTime time, AppointArrService arrService, ArrDetailService detailService) throws Exception {
+        RoomAppointInfo one = getOneByTime(time);
+        Long appointArrID = one.getAppointArr();
+        return arrService.getList(appointArrID, detailService);
+    }
+
+    @Override
+    public RoomAppointInfo getOneByTime(LocalDateTime time) {
+        return query().eq("date",time).one();
+    }
+
+    @Override
     public RoomAppointInfo getOne(String room_id) {
         return query().eq("roomid",room_id).one();
     }

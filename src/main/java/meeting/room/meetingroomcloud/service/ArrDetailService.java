@@ -10,4 +10,7 @@ import java.util.Map;
 public interface ArrDetailService extends IService<ArrDetail> {
 
     Long saveDetail(List<Map<String,String>> detail);
+
+    List<Map<String, String>> getListById(Long detailId) throws Exception;
+
 }

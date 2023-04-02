@@ -17,5 +17,6 @@ import java.util.List;
 public interface AppointArrService extends IService<AppointArr> {
     Long saveArr(List<Object> listStr, ArrDetailService detailService);
 
+    List<Object> getList(Long arrId,ArrDetailService detailService) throws Exception;
 //    boolean updateArr(List<Object> listStr, ArrDetailService detailService , Long arrID);
 }

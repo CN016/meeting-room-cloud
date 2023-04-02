@@ -10,6 +10,8 @@ import meeting.room.meetingroomcloud.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  *  前端控制器
@@ -102,5 +104,11 @@ public class RoomInfoController {
         return infoService.deleteRoomById(roomId) ? CommonResult.success("操作成功") : CommonResult.failed();
     }
 
+
+    @RequestMapping(value = "" , method = RequestMethod.GET)
+    public CommonResult<List<RoomInfo>> getList(){
+        List<RoomInfo> infos = infoService.getList();
+        return infos.isEmpty() ? CommonResult.failed() : CommonResult.success(infos);
+    }
 }
 

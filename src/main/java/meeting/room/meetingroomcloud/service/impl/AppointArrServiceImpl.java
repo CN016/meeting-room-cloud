@@ -1,13 +1,18 @@
 package meeting.room.meetingroomcloud.service.impl;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import meeting.room.meetingroomcloud.dao.AppointArrMapper;
 import meeting.room.meetingroomcloud.entity.AppointArr;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import meeting.room.meetingroomcloud.service.AppointArrService;
 import meeting.room.meetingroomcloud.service.ArrDetailService;
+import meeting.room.meetingroomcloud.utils.StringToMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +26,9 @@ import java.util.Map;
  */
 @Service
 public class AppointArrServiceImpl extends ServiceImpl<AppointArrMapper, AppointArr> implements AppointArrService {
+
+    @Autowired
+    private AppointArrMapper mapper;
 
     @Override
     public Long saveArr(List<Object> listStr , ArrDetailService detailService) {
@@ -47,6 +55,24 @@ public class AppointArrServiceImpl extends ServiceImpl<AppointArrMapper, Appoint
             e.printStackTrace();
             return 0L;
         }
+    }
+
+    @Override
+    public List<Object> getList(Long arrId, ArrDetailService detailService) throws Exception{
+        QueryWrapper<AppointArr> wrapper = new QueryWrapper<>();
+        wrapper.eq("id",arrId);
+        List<AppointArr> appointArrs = mapper.selectList(wrapper);
+        List<Object> list = new LinkedList<>();
+        for (AppointArr appoint : appointArrs) {
+            Map<String,Object> map = new HashMap<>();
+            Long detailId = appoint.getDetail();
+            List<Map<String,String>> detailList = detailService.getListById(detailId);
+            map.put("detail",detailList);
+            map.put("time", StringToMap.parseString(appoint.getTime()));
+            map.put("status",appoint.getStatus());
+            list.add(map);
+        }
+        return list;
     }
 
 //    @Override

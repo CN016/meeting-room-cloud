@@ -2,7 +2,10 @@ package meeting.room.meetingroomcloud.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import meeting.room.meetingroomcloud.entity.StudentInfo;
 import meeting.room.meetingroomcloud.entity.TeacherInfo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,4 +19,8 @@ public interface TeacherInfoService extends IService<TeacherInfo> {
     TeacherInfo getTeacherByOpenid(String openid);
 
     boolean deleteTeacherByOpenid(String openid);
+
+    List<TeacherInfo> getList();
+
+    boolean updateTeacher(String openid, Integer isProve);
 }
